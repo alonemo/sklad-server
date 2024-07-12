@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id  Int @id @default(autoincrement())
+  name  String  @unique
+  positions Position[] @relation("CategoryPositions")
+
+  @@map("categories")
+}
+
+model Position {
+  id Int  @id  @default(autoincrement())
+  name  String  @unique
+  quantity  Int
+  comment  String?
+  lastUpdateUser  Role  @default(USER)
+  units Units @default(PIECE)
+  categoryId     Int
+  category       Category @relation(fields: [categoryId], references: [id], name: "CategoryPositions")
+  updated_at DateTime @updatedAt
+
+  @@map("positions")
+  histories History[] @relation("PositionHistories")
+
+
+}
+
+model History{
+  id String   @id @default(uuid()) @db.Uuid
+  action Action @default(TOOK)
+  lastUpdateUser  Role  @default(USER)
+  positionId Int
+  position Position @relation(fields: [positionId], references: [id], name: "PositionHistories")
+  created_at DateTime @default(now())
+  comment  String?
+  quantity Int @default(1)
+  
+ @@map("history")
+}
+
+enum Units {
+  PIECE
+  PAIR
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Action {
+  TOOK
+  RETURNED
+}
