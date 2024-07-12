@@ -2,6 +2,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import CategoriesRouter from "./routes/Categories.js";
+import PositionRouter from "./routes/Position.js";
+
 dotenv.config();
 
 // создаем объект приложения
@@ -10,6 +13,9 @@ app.use(cors());
 const port = process.env.PORT || 8080;
 
 app.use(express.json());
+
+app.use("/categories", CategoriesRouter);
+app.use("/positions", PositionRouter);
 
 // определяем обработчик для маршрута "/"
 app.get("/", function (request, response) {
