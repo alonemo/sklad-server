@@ -18,10 +18,10 @@ app.use("/categories", CategoriesRouter);
 app.use("/positions", PositionRouter);
 
 // определяем обработчик для маршрута "/"
-app.get("/", function (request, response) {
-  // отправляем ответ
-  response.send("<h2>Привет Express!</h2>");
-});
+// app.get("/", function (request, response) {
+//   // отправляем ответ
+//   response.send("<h2>Привет Express!</h2>");
+// });
 
 // начинаем прослушивать подключения на запущенном порту
 app.listen(port, () => {
