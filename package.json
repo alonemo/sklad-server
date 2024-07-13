@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon app.js",
     "migrate": "prisma migrate dev",
-    "start": "node index.js"
+    "start": "node index.js",
+    "vercel-build": "echo hello"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
