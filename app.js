@@ -5,6 +5,7 @@ import cors from "cors";
 import CategoriesRouter from "./routes/Categories.js";
 import PositionRouter from "./routes/Position.js";
 
+
 dotenv.config();
 
 // создаем объект приложения

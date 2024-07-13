@@ -8,6 +8,4 @@ router.post("/", categoryController.createCategory);
 router.patch("/:id", categoryController.editCategory);
 router.delete("/:id", categoryController.deleteCategory);
 
-// export default router;
-module.exports = router;
-
+export default router;

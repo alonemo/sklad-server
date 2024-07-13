@@ -8,6 +8,4 @@ router.get("/:id", positionController.getPositionById);
 router.post("/", positionController.createPosition);
 router.delete("/:id", positionController.deletePosition);
 
-// export default router;
-module.exports = router;
-
+export default router;
