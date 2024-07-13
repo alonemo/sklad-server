@@ -28,3 +28,4 @@ app.use("/positions", PositionRouter);
 app.listen(port, () => {
   console.log(`server run, ${port} `);
 });
+export default app;
